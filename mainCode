@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Text Editor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    #editor {
+      width: 100vw;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+      outline: none;
+      border: none;
+      font-size: 16px;
+      line-height: 1.6;
+      resize: none;
+    }
+  </style>
+</head>
+<body>
+  <textarea id="editor" placeholder="Start typing here..."></textarea>
+
+  <script>
+    // Auto-save to local storage
+    const editor = document.getElementById('editor');
+
+    editor.value = localStorage.getItem('simpleTextDoc') || '';
+
+    editor.addEventListener('input', () => {
+      localStorage.setItem('simpleTextDoc', editor.value);
+    });
+  </script>
+</body>
+</html>
